@@ -30,7 +30,7 @@ void setup()
   // initialize the MPU-9250 to it's default values.
   // Most functions return an error code - INV_SUCCESS (0)
   // indicates the IMU was present and successfully set up
-  if (imu.begin() != INV_SUCCESS)
+  if (imu.begin(MPU9250ADRESS) != INV_SUCCESS)
   {
     while (1)
     {
