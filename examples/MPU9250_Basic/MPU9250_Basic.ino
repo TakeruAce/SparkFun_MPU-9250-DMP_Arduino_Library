@@ -18,6 +18,7 @@ Supported Platforms:
 #include <SparkFunMPU9250-DMP.h>
 
 #define SerialPort SerialUSB
+#define MPU9250ADRESS 0x68
 
 MPU9250_DMP imu;
 

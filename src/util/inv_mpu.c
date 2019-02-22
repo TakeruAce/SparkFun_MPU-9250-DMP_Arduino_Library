@@ -244,7 +244,7 @@ struct test_s {
 /* Gyro driver state variables. */
 struct gyro_state_s {
     const struct gyro_reg_s *reg;
-    const struct hw_s *hw;
+    struct hw_s *hw;
     struct chip_cfg_s chip_cfg;
     const struct test_s *test;
 };
@@ -512,8 +512,8 @@ const struct gyro_reg_s reg = {
     .i2c_delay_ctrl = 0x67
 #endif
 };
-const struct hw_s hw = {
-    .addr           = 0x68,
+struct hw_s hw = {
+    .addr           = 0x00,
     .max_fifo       = 1024,
     .num_reg        = 128,
     .temp_sens      = 321,
@@ -543,7 +543,7 @@ const struct test_s test = {
     .sample_wait_ms = 10    //10ms sample time wait
 };
 
-static struct gyro_state_s st = {
+struct gyro_state_s st = {
     .reg = &reg,
     .hw = &hw,
     .test = &test
@@ -643,9 +643,10 @@ int mpu_read_reg(unsigned char reg, unsigned char *data)
  *  @param[in]  int_param   Platform-specific parameters to interrupt API.
  *  @return     0 if successful.
  */
-int mpu_init(struct int_param_s *int_param)
+int mpu_init(struct int_param_s *int_param, unsigned char slave_address)
 {
     unsigned char data[6];
+    st.hw->addr = slave_address;
 
     /* Reset device. */
     data[0] = BIT_RESET;

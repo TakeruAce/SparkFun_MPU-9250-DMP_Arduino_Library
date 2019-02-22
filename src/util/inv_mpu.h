@@ -60,7 +60,7 @@ struct int_param_s {
 
 /* Set up APIs */
 int set_int_enable(unsigned char enable);
-int mpu_init(struct int_param_s *int_param);
+int mpu_init(struct int_param_s *int_param, unsigned char slave_adress);
 int mpu_init_slave(void);
 int mpu_set_bypass(unsigned char bypass_on);
 

@@ -36,14 +36,14 @@ MPU9250_DMP::MPU9250_DMP()
 	_gSense = 0.0f;   // Updated after gyro FSR is set
 }
 
-inv_error_t MPU9250_DMP::begin(void)
+inv_error_t MPU9250_DMP::begin(unsigned char slave_address)
 {
 	inv_error_t result;
     struct int_param_s int_param;
 	
 	Wire.begin();
 	
-	result = mpu_init(&int_param);
+	result = mpu_init(&int_param, slave_address);
 	
 	if (result)
 		return result;
