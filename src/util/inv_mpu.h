@@ -62,6 +62,8 @@ struct int_param_s {
 int set_int_enable(unsigned char enable);
 int mpu_init(struct int_param_s *int_param, unsigned char slave_adress);
 int mpu_init_slave(void);
+unsigned char get_slave_address(void);
+unsigned char get_who_am_i(void);
 int mpu_set_bypass(unsigned char bypass_on);
 
 /* Configuration APIs */

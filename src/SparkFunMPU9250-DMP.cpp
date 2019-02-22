@@ -523,6 +523,16 @@ unsigned char MPU9250_DMP::getTapCount(void)
 	return tap_count;
 }
 
+unsigned char MPU9250_DMP::getSlaveAddress(void)
+{
+	return get_slave_address();
+}
+
+unsigned char MPU9250_DMP::getWhoAmI(void)
+{
+	return get_who_am_i();
+}
+
 bool MPU9250_DMP::tapAvailable(void)
 {
 	return _tap_available;

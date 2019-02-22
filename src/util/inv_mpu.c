@@ -723,6 +723,16 @@ int mpu_init(struct int_param_s *int_param, unsigned char slave_address)
     return 0;
 }
 
+unsigned char get_slave_address(void) {
+    return st.hw->addr;
+}
+
+unsigned char get_who_am_i(void) {
+    unsigned char data[1];
+    i2c_read(st.hw->addr,st.reg->who_am_i,1,data);
+    return data[0];
+}
+
 /**
  *  @brief      Enter low-power accel-only mode.
  *  In low-power accel mode, the chip goes to sleep and only wakes up to sample

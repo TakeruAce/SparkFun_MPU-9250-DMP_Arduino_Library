@@ -303,6 +303,10 @@ public:
 	// Output: Value between 1-8 indicating successive number of taps sensed.
 	unsigned char getTapCount(void);
 
+	unsigned char getSlaveAddress(void);
+
+	unsigned char getWhoAmI(void);
+
 	// dmpSetOrientation -- Set orientation matrix, used for orientation sensing.
 	// Use defaultOrientation matrix as an example input.
 	// Input: Gyro and accel orientation in body frame (9-byte array)
